@@ -93,6 +93,39 @@
     }
     .nav-phone:hover { background: #5f66a8; }
 
+    /* ── DROPDOWN ── */
+    .nav-links li { position: relative; }
+    .dropdown > a::after {
+      content: ' ▾';
+      font-size: 9px;
+      opacity: .65;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      background: #191919;
+      min-width: 220px;
+      border-top: 2px solid #757bbd;
+      z-index: 1000;
+    }
+    .dropdown-menu li { border-bottom: 1px solid rgba(255,255,255,.06); }
+    .dropdown-menu li:last-child { border-bottom: none; }
+    .dropdown-menu a {
+      display: block;
+      padding: 11px 18px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,.75);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-weight: 400;
+      transition: color .2s, background .2s;
+    }
+    .dropdown-menu a::after { display: none; }
+    .dropdown-menu a:hover { color: #757bbd; background: rgba(255,255,255,.04); }
+    .nav-links li:hover .dropdown-menu { display: block; }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -497,10 +530,18 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#"><img src="Befit2benefit%20logo.png" alt="BeFit2Benefit" style="filter: brightness(0) invert(1);"></a>
     <ul class="nav-links">
-      <li><a href="#">POČETNA</a></li>
-      <li><a href="#">O NAMA</a></li>
-      <li><a href="#">TRENINZI</a></li>
-      <li><a href="#">KONTAKT</a></li>
+      <li><a href="index.html" class="active">POČETNA</a></li>
+      <li><a href="o-nama.html">O NAMA</a></li>
+      <li class="dropdown">
+        <a href="treninzi.html">TRENINZI</a>
+        <ul class="dropdown-menu">
+          <li><a href="treninzi.html#individualni">Individualni treninzi</a></li>
+          <li><a href="treninzi.html#polu-individualni">Polu individualni treninzi</a></li>
+          <li><a href="treninzi.html#online-mentorstvo">Online mentorstvo</a></li>
+          <li><a href="treninzi.html#korporativni">Korporativni fitness</a></li>
+        </ul>
+      </li>
+      <li><a href="kontakt.html">KONTAKT</a></li>
     </ul>
     <a href="tel:0912407019" class="nav-phone">091 240 7019</a>
   </div>
