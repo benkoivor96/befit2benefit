@@ -4,458 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Nama – BeFit2Benefit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="main.css">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Ubuntu', sans-serif;
-      overflow-x: hidden;
-      background: #fff;
-    }
-
-    a { text-decoration: none; }
-
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: #757bbd;
-      color: #fff;
-      font-size: 13px;
-      padding: 9px 0;
-    }
-    .top-bar .tb-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 80px;
-      position: relative;
-    }
-    .top-bar-left, .top-bar-center, .top-bar-right {
-      display: flex; align-items: center;
-    }
-    .top-bar-center { position: absolute; left: 50%; transform: translateX(-50%); }
-    .top-bar-left a, .top-bar-center a, .top-bar-right a {
-      color: #fff;
-      display: flex; align-items: center; gap: 7px;
-      transition: opacity .2s;
-    }
-    .top-bar-left a:hover, .top-bar-center a:hover, .top-bar-right a:hover { opacity: .75; }
-    .top-bar-right { display: flex; gap: 16px; }
-    .top-bar-right a { font-size: 16px; }
-
-    /* ── NAV ── */
-    nav {
-      background: #191919;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo img { height: 68px; filter: brightness(0) invert(1); }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-    }
-    .nav-links a {
-      color: #fff;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      transition: color .2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: #757bbd; }
-    .nav-phone {
-      background: #757bbd;
-      color: #fff;
-      padding: 12px 26px;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .5px;
-      transition: background .2s;
-    }
-    .nav-phone:hover { background: #5f66a8; }
-
-    /* ── DROPDOWN ── */
-    .nav-links li { position: relative; }
-    .dropdown > a::after {
-      content: ' ▾';
-      font-size: 9px;
-      opacity: .65;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 1px);
-      left: 0;
-      background: #191919;
-      min-width: 220px;
-      border-top: 2px solid #757bbd;
-      z-index: 1000;
-    }
-    .dropdown-menu li { border-bottom: 1px solid rgba(255,255,255,.06); }
-    .dropdown-menu li:last-child { border-bottom: none; }
-    .dropdown-menu a {
-      display: block;
-      padding: 11px 18px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,.75);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      font-weight: 400;
-      transition: color .2s, background .2s;
-    }
-    .dropdown-menu a::after { display: none; }
-    .dropdown-menu a:hover { color: #757bbd; background: rgba(255,255,255,.04); }
-    .nav-links li:hover .dropdown-menu { display: block; }
+    body { background: #fff; }
 
     /* ── PAGE HEADER ── */
     .page-header {
-      position: relative;
       height: 200px;
       background: url('pero%20vjezba%202.jpeg') center 30% / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.62);
-    }
-    .page-header h1 {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
+    .page-header h1 { font-size: clamp(26px, 4vw, 42px); }
 
-    /* ── ABOUT SECTION ── */
-    .about-section {
-      background: #fff;
-      padding: 64px 24px;
-    }
-    .about-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    /* ── ABOUT ── */
+    .about-section { background: #fff; padding: 64px 24px; }
+    .about-wrap { max-width: 760px; margin: 0 auto; }
     .about-wrap h2 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #191919;
-      margin-bottom: 10px;
-      text-align: center;
+      font-size: 26px; font-weight: 800; color: #191919;
+      margin-bottom: 10px; text-align: center;
     }
-    .about-rule {
-      width: 40px;
-      height: 3px;
-      background: #757bbd;
-      margin: 0 auto 32px;
-    }
-    .about-wrap p {
-      font-size: 13.5px;
-      color: #555;
-      line-height: 1.82;
-      margin-bottom: 12px;
-    }
+    .about-rule { width: 40px; height: 3px; background: #757bbd; margin: 0 auto 32px; }
+    .about-wrap p { font-size: 13.5px; color: #555; line-height: 1.82; margin-bottom: 12px; }
     .about-wrap p:last-child { margin-bottom: 0; }
     .about-wrap strong { color: #191919; font-weight: 700; }
 
-    /* ── TEAM SECTION ── */
-    .team-section {
-      background: #f7f8fc;
-      padding: 80px 24px;
-    }
-    .team-section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .team-section-inner h2 {
-      font-size: 36px;
-      font-weight: 800;
-      color: #191919;
-      margin-bottom: 10px;
-    }
-    .team-rule {
-      width: 48px;
-      height: 3px;
-      background: #757bbd;
-      margin: 0 auto 52px;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      text-align: left;
-    }
-    .team-card .photo-wrap {
-      width: 100%;
-      height: 420px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .team-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .team-card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #191919;
-      margin-bottom: 3px;
-    }
-    .team-card .role {
-      font-size: 13px;
-      font-weight: 600;
-      color: #757bbd;
-      letter-spacing: .5px;
-      margin-bottom: 16px;
-    }
-    .team-card p {
-      font-size: 13.5px;
-      color: #666;
-      line-height: 1.8;
-    }
+    /* ── TEAM ── */
+    .team-section { background: #f7f8fc; padding: 72px 24px; }
+    .team-section-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .team-section-inner h2 { font-size: 32px; font-weight: 800; color: #191919; margin-bottom: 10px; }
+    .team-rule { width: 48px; height: 3px; background: #757bbd; margin: 0 auto 48px; }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; text-align: left; }
+    .team-card .photo-wrap { width: 100%; height: 420px; overflow: hidden; margin-bottom: 20px; }
+    .team-card img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .team-card h3 { font-size: 22px; font-weight: 700; color: #191919; margin-bottom: 3px; }
+    .team-card .role { font-size: 13px; font-weight: 600; color: #757bbd; letter-spacing: .5px; margin-bottom: 16px; }
+    .team-card p { font-size: 13.5px; color: #666; line-height: 1.8; }
 
-    /* ── REVIEWS ── */
-    .reviews-section {
-      position: relative;
-      padding: 80px 24px;
-      background: url('pero%20vjezba%202.jpeg') center center / cover no-repeat;
+    @media (max-width: 760px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .team-card .photo-wrap { height: 300px; }
     }
-    .reviews-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(8,8,28,.78);
-    }
-    .reviews-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .reviews-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 40px 40px 36px;
-    }
-    .reviews-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-    .reviews-head h2 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #191919;
-    }
-    .rating-block { text-align: right; }
-    .rating-block .score {
-      font-size: 30px;
-      font-weight: 800;
-      color: #191919;
-      line-height: 1;
-    }
-    .stars { color: #f5a623; font-size: 17px; letter-spacing: 2px; }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-    .review-item {
-      border: 1px solid #eaeaf0;
-      border-radius: 6px;
-      padding: 14px 16px;
-    }
-    .rev-stars { color: #f5a623; font-size: 12px; margin-bottom: 3px; }
-    .rev-date { font-size: 11px; color: #aaa; margin-bottom: 8px; }
-    .rev-text { font-size: 12.5px; color: #555; line-height: 1.6; }
-    .rev-text a { color: #757bbd; font-weight: 600; }
-    .rev-author {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .rev-avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: #757bbd;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .rev-author-name { font-size: 12px; font-weight: 600; color: #333; flex: 1; }
-    .g-icon { color: #4285f4; font-size: 15px; }
-    .reviews-dots {
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-      margin-bottom: 28px;
-    }
-    .reviews-dots span {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: #ddd;
-      cursor: pointer;
-      display: block;
-    }
-    .reviews-dots span.active { background: #757bbd; }
-    .reviews-cta { text-align: center; }
-
-    /* ── CTA ── */
-    .cta-section {
-      position: relative;
-      padding: 80px 24px;
-      background: url('pero%20vjezba%206%20wide%20outdoor.jpeg') center center / cover no-repeat;
-      color: #fff;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.6);
-    }
-    .cta-card {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(20,20,30,.88);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 12px;
-      padding: 52px 56px;
-      text-align: left;
-    }
-    .cta-eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #757bbd;
-      margin-bottom: 16px;
-    }
-    .cta-card h2 {
-      font-size: clamp(30px, 4vw, 52px);
-      font-weight: 800;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-    .cta-card p {
-      max-width: 680px;
-      margin-bottom: 36px;
-      color: #b0b0c8;
-      font-size: 15px;
-      line-height: 1.75;
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 36px;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: background .2s;
-    }
-    .btn-purple { background: #757bbd; color: #fff; }
-    .btn-purple:hover { background: #5f66a8; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #0c0c1e;
-      padding: 26px 24px;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-logo img {
-      height: 38px;
-      filter: brightness(0) invert(1);
-      opacity: .85;
-    }
-    .footer-copy {
-      font-size: 12px;
-      color: #555;
-    }
-    .footer-social { display: flex; gap: 16px; }
-    .footer-social a {
-      color: #555;
-      font-size: 17px;
-      transition: color .2s;
-    }
-    .footer-social a:hover { color: #757bbd; }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div class="tb-inner">
-    <div class="top-bar-left">
-      <a href="tel:0912407019"><i class="fas fa-mobile-alt fa-sm"></i> 091 240 7019</a>
-    </div>
-    <div class="top-bar-center">
-      <a href="#"><i class="fas fa-map-marker-alt fa-sm"></i> Južna Obala III, br. 6, Zagreb 10000</a>
-    </div>
-    <div class="top-bar-right">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="index.html"><img src="Befit2benefit%20logo.png" alt="BeFit2Benefit"></a>
-    <ul class="nav-links">
-      <li><a href="index.html">POČETNA</a></li>
-      <li><a href="o-nama.html" class="active">O NAMA</a></li>
-      <li class="dropdown">
-        <a href="treninzi.html">TRENINZI</a>
-        <ul class="dropdown-menu">
-          <li><a href="treninzi.html#individualni">Individualni treninzi</a></li>
-          <li><a href="treninzi.html#polu-individualni">Polu individualni treninzi</a></li>
-          <li><a href="treninzi.html#online-mentorstvo">Online mentorstvo</a></li>
-          <li><a href="treninzi.html#korporativni">Korporativni fitness</a></li>
-        </ul>
-      </li>
-      <li><a href="kontakt.html">KONTAKT</a></li>
-    </ul>
-    <a href="tel:0912407019" class="nav-phone">091 240 7019</a>
-  </div>
-</nav>
+<div id="site-header"></div>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -485,27 +78,22 @@
     <h2>BeFit2Benefit Team</h2>
     <div class="team-rule"></div>
     <div class="team-grid">
-
-      <!-- Petar -->
       <div class="team-card">
         <div class="photo-wrap">
-          <img src="pero%20vjezba.jpeg" alt="Petar Sabolčec">
+          <img src="pero%20vjezba.jpeg" alt="Petar Sabolčec" loading="lazy">
         </div>
         <h3>Petar Sabolčec</h3>
         <div class="role">Univ. Mag. Cin.</div>
         <p>Osnivač BeFit2Benefit platforme i fitness trainer s bogatim iskustvom u radu s različitim korisnicima. Moj pristup treninzima temelji se na razumijevanju specifičnih potreba svakog klijenta, bilo da se radi o individualnim treninzima, grupnim programima ili specifičnim potrebama kao što su treninzi za osobe s cerebralnom paralizom ili Downovim sindromom. Kao voditelj Lidl gym-a, imam priliku svakodnevno raditi s klijentima s velikim brojem raznih profila, što mi omogućuje da u praksi primijenim svoje znanje i iskustvo. Osim toga, kroz svoju ulogu vanjskog suradnika na Kineziološkom Fakultetu, stalno se educiram i usavršavam, što mi pomaže da pratim najnovije trendove i znanstvene smjernice u fitness industriji. Završio sam dodatne certifikate za bodyweight treninge, kettlebell treninge i pliometriju, a kontinuirano se usavršavam u različitim područijima fitnessa kako bih vam mogao ponuditi najkvalitetnije treninge. S BeFit2Benefit platformom, moj cilj je pomoći vam da ostvarite svoje fitness ciljeve, poboljšate zdravlje i unaprijedite kvalitetu života, kroz personalizirani pristup koji odgovara vašim potrebama i ciljevima.</p>
       </div>
-
-      <!-- Josipa -->
       <div class="team-card">
         <div class="photo-wrap">
-          <img src="Befit2benefit%20Josipa%20pp.jpeg" alt="Josipa Nišandžić">
+          <img src="Befit2benefit%20Josipa%20pp.jpeg" alt="Josipa Nišandžić" loading="lazy">
         </div>
         <h3>Josipa Nišandžić</h3>
         <div class="role">Mag. Psh.</div>
         <p>Magistra psihologije i edukatorica bihevioralno-kognitivne psihoterapije (BKT) na supervizijskom stupnju pri Hrvatskom udruženju za bihevioralno-kognitivne terapije (HUBBKOT). Svoje fakultetsko obrazovanje stekla sam 2017. godine na Odjelu za psihologiju, Sveučilišta u Zadru. Dosadašnje radno iskustvo stekla sam primarno u sustavu socijalne skrbi, radeći s različitim skupinama ljudi. U prvom redu to su odrasle osobe sa psihičkim i (rijetkim) fizičkim oboljenjima, djeca s teškoćama u razvoju i njihovi roditelji i skrbnici. U svom dosadašnjem profesionalnom radu pružala sam psihološku podršku kroz različite psihološke tretmane, savjetovanje i psihodijagnostiku. Osim radnog iskustva, važno mi je istaknuti i stečeno volontersko iskustvo u područuju savjetodavne psihologije s populacijom studenata. U svom savjetodavnom radu koristim se bihevioralno-kognitivnim tehnikama. Osim ovog profesionalnog dijela života, majka sam dvoje djece, supruga i stručni voditelj terapijskog psa. Što se tiče sportskog i aktivnog dijela života, prije majčinske uloge bavila sam se tčanjem (polumaratonske utrke, trail i trek utrke). Sada nastojim biti što aktivnija i djecu uključiti u bavljenje fizičkom aktivnošću. Trudimo se što češće planinariti i slobodne trenutke provoditi u prirodi i na svježem zraku.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -554,44 +142,18 @@
         </div>
       </div>
       <div class="reviews-dots">
-        <span></span>
-        <span></span>
-        <span class="active"></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span class="active"></span><span></span><span></span>
       </div>
       <div class="reviews-cta">
-        <a href="#" class="btn btn-purple">BESPLATNE KONZULTACIJE</a>
+        <a href="kontakt.html" class="btn btn-purple">BESPLATNE KONZULTACIJE</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="cta-card">
-    <p class="cta-eyebrow">Spremni na promjenu?</p>
-    <h2>Besplatne konzultacije</h2>
-    <p>Započnite s besplatnim konzultacijama i otkrijte kako BeFit2Benefit može pomoći baš vama! Razgovarajte s našim trenerom, postavite pitanja i dobite jasne smjernice za svoj prvi korak prema zdravlju i snažnijem sebi.</p>
-    <a href="tel:0912407019" class="btn btn-purple">KONTAKTIRAJTE NAS</a>
-  </div>
-</section>
+<div id="site-cta"></div>
+<div id="site-footer"></div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <a href="index.html"><img src="Befit2benefit%20logo.png" alt="BeFit2Benefit"></a>
-    </div>
-    <p class="footer-copy">© Copyright 2026 BeFit2Benefit. Sva prava pridržana.</p>
-    <div class="footer-social">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-</footer>
-
+<script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,413 @@
+/* ============================================================
+   BeFit2Benefit — Global Stylesheet
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+  --indigo: #757bbd;
+  --indigo-dark: #5f66a8;
+  --dark: #191919;
+  --black: #000;
+  --white: #fff;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Ubuntu', sans-serif; overflow-x: hidden; }
+a { text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--indigo);
+  color: var(--white);
+  font-size: 13px;
+  padding: 9px 0;
+}
+.top-bar .tb-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  position: relative;
+}
+.top-bar-left, .top-bar-center, .top-bar-right { display: flex; align-items: center; }
+.top-bar-center { position: absolute; left: 50%; transform: translateX(-50%); }
+.top-bar-left a, .top-bar-center a, .top-bar-right a {
+  color: var(--white);
+  display: flex; align-items: center; gap: 7px;
+  transition: opacity .2s;
+}
+.top-bar-left a:hover, .top-bar-center a:hover, .top-bar-right a:hover { opacity: .75; }
+.top-bar-right { gap: 16px; }
+.top-bar-right a { font-size: 16px; }
+
+/* ── NAV ── */
+nav {
+  background: var(--dark);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo img { height: 68px; filter: brightness(0) invert(1); }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+.nav-links a {
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--indigo); }
+.nav-phone {
+  background: var(--indigo);
+  color: var(--white);
+  padding: 12px 26px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  transition: background .2s;
+}
+.nav-phone:hover { background: var(--indigo-dark); }
+
+/* ── DROPDOWN ── */
+.nav-links li { position: relative; }
+.dropdown > a::after { content: ' ▾'; font-size: 9px; opacity: .65; }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  background: var(--dark);
+  min-width: 220px;
+  border-top: 2px solid var(--indigo);
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.dropdown-menu li { border-bottom: 1px solid rgba(255,255,255,.06); }
+.dropdown-menu li:last-child { border-bottom: none; }
+.dropdown-menu a {
+  display: block;
+  padding: 11px 18px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: 400;
+  transition: color .2s, background .2s;
+}
+.dropdown-menu a::after { display: none; }
+.dropdown-menu a:hover { color: var(--indigo); background: rgba(255,255,255,.04); }
+.nav-links li:hover .dropdown-menu { display: block; }
+
+/* ── HAMBURGER ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1002;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform .28s ease, opacity .28s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-purple { background: var(--indigo); color: var(--white); border-radius: 3px; }
+.btn-purple:hover { background: var(--indigo-dark); }
+.btn-outline-white { border: 2px solid var(--indigo); color: var(--white); background: transparent; }
+.btn-outline-white:hover { background: var(--indigo); }
+
+/* ── REVIEWS ── */
+.reviews-section {
+  position: relative;
+  padding: 80px 24px;
+  background: url('pero%20vjezba%202.jpeg') center center / cover no-repeat;
+}
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,28,.78);
+}
+.reviews-inner, .reviews-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.reviews-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 40px 40px 36px;
+}
+.reviews-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+.reviews-head h2 { font-size: 26px; font-weight: 800; color: var(--dark); }
+.rating-block { text-align: right; }
+.rating-block .score { font-size: 30px; font-weight: 800; color: var(--dark); line-height: 1; }
+.stars { color: #f5a623; font-size: 17px; letter-spacing: 2px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.review-item { border: 1px solid #eaeaf0; border-radius: 6px; padding: 14px 16px; }
+.rev-stars { color: #f5a623; font-size: 12px; margin-bottom: 3px; }
+.rev-date { font-size: 11px; color: #aaa; margin-bottom: 8px; }
+.rev-text { font-size: 12.5px; color: #555; line-height: 1.6; }
+.rev-text a { color: var(--indigo); font-weight: 600; }
+.rev-author { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.rev-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: var(--white);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.rev-author-name { font-size: 12px; font-weight: 600; color: #333; flex: 1; }
+.g-icon { color: #4285f4; font-size: 15px; }
+.reviews-dots { display: flex; justify-content: center; gap: 7px; margin-bottom: 28px; }
+.reviews-dots span {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+}
+.reviews-dots span.active { background: var(--indigo); }
+.reviews-cta { text-align: center; }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  position: relative;
+  padding: 80px 24px;
+  background: url('pero%20vjezba%206%20wide%20outdoor.jpeg') center center / cover no-repeat;
+  color: var(--white);
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+}
+.cta-card, .cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(20,20,30,.88);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 52px 56px;
+  text-align: left;
+}
+.cta-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 16px;
+}
+.cta-card h2, .cta-inner h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.cta-card > p, .cta-inner > p {
+  max-width: 680px;
+  margin-bottom: 36px;
+  color: #b0b0c8;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0c0c1e;
+  padding: 26px 24px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo img { height: 38px; filter: brightness(0) invert(1); opacity: .85; }
+.footer-copy { font-size: 12px; color: #555; }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a { color: #555; font-size: 17px; transition: color .2s; }
+.footer-social a:hover { color: var(--indigo); }
+
+/* ── PAGE HEADER (shared) ── */
+.page-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.62);
+}
+.page-header h1 {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+
+/* ── TABLET (≤ 960px) ── */
+@media (max-width: 960px) {
+  /* Service 2-col → 1-col */
+  .service-inner {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: "media" "content" !important;
+    padding: 0 24px !important;
+    gap: 32px !important;
+  }
+  .service-inner.reverse {
+    grid-template-areas: "media" "content" !important;
+  }
+  .service-media img { height: 300px !important; }
+  .service-media video { width: 100% !important; }
+
+  /* Feature cards 3-col → 2-col */
+  .feature-cards { grid-template-columns: 1fr 1fr !important; }
+  .fcard.col-span-2 { grid-column: span 2 !important; }
+
+  /* Team grid */
+  .team-grid { grid-template-columns: 1fr !important; }
+
+  /* Reviews 3-col → 2-col */
+  .reviews-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ── MOBILE (≤ 680px) ── */
+@media (max-width: 680px) {
+  /* Hamburger */
+  .hamburger { display: flex; }
+  .nav-phone { display: none; }
+
+  /* Mobile nav overlay */
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--dark);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    z-index: 1001;
+    overflow-y: auto;
+    padding: 80px 24px 40px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > li > a { font-size: 18px; letter-spacing: 2px; }
+  .nav-links > li > a::after { display: none; }
+
+  /* Dropdown on mobile */
+  .dropdown-menu {
+    position: static;
+    display: none;
+    background: rgba(255,255,255,.06);
+    border-top: none;
+    border-left: 2px solid var(--indigo);
+    box-shadow: none;
+    min-width: 180px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .dropdown.open .dropdown-menu { display: block; }
+  .nav-links li:hover .dropdown-menu { display: none; }
+  .dropdown.open .dropdown-menu { display: block; }
+
+  /* Top bar */
+  .top-bar .tb-inner { padding: 0 16px; }
+  .top-bar-center { display: none; }
+
+  /* Feature cards → 1-col */
+  .feature-cards { grid-template-columns: 1fr !important; }
+  .fcard.col-span-2 { grid-column: span 1 !important; }
+
+  /* Reviews → 1-col */
+  .reviews-grid { grid-template-columns: 1fr !important; }
+  .reviews-card { padding: 24px 16px; }
+
+  /* CTA */
+  .cta-card, .cta-inner { padding: 32px 24px; border-radius: 8px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+
+  /* Page header */
+  .page-header h1 { font-size: clamp(24px, 7vw, 38px); }
+}
+
+/* ── SMALL MOBILE (≤ 420px) ── */
+@media (max-width: 420px) {
+  .nav-inner { padding: 0 16px; }
+  .service-section { padding: 44px 0 !important; }
+  .service-content h2 { font-size: 26px !important; }
+}

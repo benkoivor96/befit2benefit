@@ -4,150 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treninzi – BeFit2Benefit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="main.css">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Ubuntu', sans-serif;
-      overflow-x: hidden;
-      background: #000;
-    }
-
-    a { text-decoration: none; }
-
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: #757bbd;
-      color: #fff;
-      font-size: 13px;
-      padding: 9px 0;
-    }
-    .top-bar .tb-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 80px;
-      position: relative;
-    }
-    .top-bar-left, .top-bar-center, .top-bar-right {
-      display: flex; align-items: center;
-    }
-    .top-bar-center { position: absolute; left: 50%; transform: translateX(-50%); }
-    .top-bar-left a, .top-bar-center a, .top-bar-right a {
-      color: #fff;
-      display: flex; align-items: center; gap: 7px;
-      transition: opacity .2s;
-    }
-    .top-bar-left a:hover, .top-bar-center a:hover, .top-bar-right a:hover { opacity: .75; }
-    .top-bar-right { display: flex; gap: 16px; }
-    .top-bar-right a { font-size: 16px; }
-
-    /* ── NAV ── */
-    nav {
-      background: #191919;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo img { height: 68px; filter: brightness(0) invert(1); }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-    }
-    .nav-links a {
-      color: #fff;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      transition: color .2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: #757bbd; }
-    .nav-phone {
-      background: #757bbd;
-      color: #fff;
-      padding: 12px 26px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .5px;
-      transition: background .2s;
-    }
-    .nav-phone:hover { background: #5f66a8; }
-
-    /* ── DROPDOWN ── */
-    .nav-links li { position: relative; }
-    .dropdown > a::after {
-      content: ' ▾';
-      font-size: 9px;
-      opacity: .65;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 1px);
-      left: 0;
-      background: #191919;
-      min-width: 220px;
-      border-top: 2px solid #757bbd;
-      z-index: 1000;
-    }
-    .dropdown-menu li { border-bottom: 1px solid rgba(255,255,255,.06); }
-    .dropdown-menu li:last-child { border-bottom: none; }
-    .dropdown-menu a {
-      display: block;
-      padding: 11px 18px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,.75);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      font-weight: 400;
-      transition: color .2s, background .2s;
-    }
-    .dropdown-menu a::after { display: none; }
-    .dropdown-menu a:hover { color: #757bbd; background: rgba(255,255,255,.04); }
-    .nav-links li:hover .dropdown-menu { display: block; }
+    body { background: #000; }
 
     /* ── PAGE HEADER ── */
     .page-header {
-      position: relative;
-      padding: 90px 24px 80px;
-      text-align: center;
-      background: url('pero%20vjezba%205%20wide.jpeg') center center / cover no-repeat;
+      height: 260px;
+      background: url('pero%20vjezba%205%20wide.jpeg') center 30% / cover no-repeat;
     }
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.78);
-    }
-    .page-header-content {
-      position: relative;
-      z-index: 1;
-    }
-    .page-header h1 {
-      font-size: 55px;
-      font-weight: 700;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      line-height: 1.1;
-    }
+    .page-header h1 { font-size: clamp(30px, 5vw, 52px); }
 
     /* ── SERVICE SECTIONS ── */
     .service-section {
@@ -164,308 +31,52 @@
       gap: 56px;
       align-items: center;
     }
-    .service-inner.reverse {
-      grid-template-areas: "content media";
-    }
-    .service-media {
-      grid-area: media;
-      overflow: hidden;
-    }
+    .service-inner.reverse { grid-template-areas: "content media"; }
+    .service-media { grid-area: media; overflow: hidden; }
     .service-media img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+      width: 100%; height: 560px;
+      object-fit: cover; object-position: center top; display: block;
     }
-    .service-media video {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-    .service-content {
-      grid-area: content;
-      padding: 8px 0;
-    }
+    .service-media video { display: block; max-width: 100%; height: auto; }
+    .service-content { grid-area: content; padding: 8px 0; }
     .service-content h2 {
-      font-size: 34px;
-      font-weight: 700;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-      line-height: 1.15;
+      font-size: 34px; font-weight: 700; color: #fff;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 10px; line-height: 1.15;
     }
-    .svc-rule {
-      width: 36px;
-      height: 3px;
-      background: #fff;
-      opacity: .5;
-      margin-bottom: 16px;
-    }
-    .service-desc {
-      color: rgba(255,255,255,.82);
-      font-size: 13.5px;
-      line-height: 1.85;
-      margin-bottom: 22px;
-    }
+    .svc-rule { width: 36px; height: 3px; background: #fff; opacity: .5; margin-bottom: 16px; }
+    .service-desc { color: rgba(255,255,255,.82); font-size: 13.5px; line-height: 1.85; margin-bottom: 22px; }
 
-    /* feature cards — 3-column grid */
-    .feature-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-    /* 5th card spans last 2 columns in row 2 */
+    /* feature cards */
+    .feature-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 22px; }
     .fcard.col-span-2 { grid-column: span 2; }
     .fcard {
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(201,216,224,.35);
-      padding: 13px 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      background: rgba(0,0,0,.55); border: 1px solid rgba(201,216,224,.35);
+      padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;
     }
-    .fcard-icon {
-      font-size: 14px;
-      color: #757BBD;
-    }
-    .fcard-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #757BBD;
-      letter-spacing: .3px;
-    }
-    .fcard p {
-      color: rgba(255,255,255,.75);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    /* CTA button in service sections */
+    .fcard-icon { font-size: 14px; color: #757BBD; }
+    .fcard-title { font-size: 12.5px; font-weight: 700; color: #757BBD; letter-spacing: .3px; }
+    .fcard p { color: rgba(255,255,255,.75); font-size: 12px; line-height: 1.6; }
     .btn-svc {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 22px;
-      padding: 14px 28px;
-      background: #757BBD;
-      color: #fff;
-      border: 2px solid rgba(24,139,246,.7);
-      font-size: 12.5px;
-      font-weight: 500;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      transition: background .2s, border-color .2s;
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
+      padding: 14px 28px; background: #757BBD; color: #fff;
+      border: 2px solid rgba(24,139,246,.7); font-size: 12.5px; font-weight: 500;
+      letter-spacing: 1.2px; text-transform: uppercase; transition: background .2s, border-color .2s;
     }
     .btn-svc:hover { background: #5f66a8; border-color: #188bf6; }
 
-    /* ── REVIEWS ── */
-    .reviews-section {
-      background: #000;
-      padding: 80px 24px;
-    }
-    .reviews-wrap {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .reviews-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 40px 40px 36px;
-      color: #333;
-    }
-    .reviews-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-    .reviews-head h2 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #191919;
-    }
-    .rating-block { text-align: right; }
-    .rating-block .score {
-      font-size: 30px;
-      font-weight: 800;
-      color: #191919;
-      line-height: 1;
-    }
-    .stars { color: #f5a623; font-size: 17px; letter-spacing: 2px; }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-    .review-item {
-      border: 1px solid #eaeaf0;
-      border-radius: 6px;
-      padding: 14px 16px;
-    }
-    .rev-stars { color: #f5a623; font-size: 12px; margin-bottom: 3px; }
-    .rev-date { font-size: 11px; color: #aaa; margin-bottom: 8px; }
-    .rev-text { font-size: 12.5px; color: #555; line-height: 1.6; }
-    .rev-text a { color: #757bbd; font-weight: 600; }
-    .rev-author {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .rev-avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: #757bbd;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .rev-author-name { font-size: 12px; font-weight: 600; color: #333; flex: 1; }
-    .g-icon { color: #4285f4; font-size: 15px; }
-    .reviews-dots {
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-      margin-bottom: 28px;
-    }
-    .reviews-dots span {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: #ddd;
-      cursor: pointer;
-      display: block;
-    }
-    .reviews-dots span.active { background: #757bbd; }
-    .reviews-cta { text-align: center; }
-    .btn {
-      display: inline-block;
-      padding: 14px 36px;
-      border-radius: 4px;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: background .2s, color .2s;
-    }
-    .btn-purple { background: #757bbd; color: #fff; }
-    .btn-purple:hover { background: #5f66a8; }
-
-    /* ── CTA SECTION ── */
-    .cta-section {
-      position: relative;
-      padding: 110px 24px;
-      text-align: center;
-      background: url('pero%20vjezba%206%20wide%20outdoor.jpeg') center center / cover no-repeat;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, #000 20%, #757BBD 60%, transparent 100%);
-    }
-    .cta-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .cta-eyebrow {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #757BBD;
-      margin-bottom: 14px;
-    }
-    .cta-inner h2 {
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 22px;
-    }
-    .cta-inner p {
-      color: rgba(255,255,255,.82);
-      font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 36px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #0c0c1e;
-      padding: 26px 24px;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-logo img {
-      height: 38px;
-      filter: brightness(0) invert(1);
-      opacity: .85;
-    }
-    .footer-copy { font-size: 12px; color: #555; }
-    .footer-social { display: flex; gap: 16px; }
-    .footer-social a { color: #555; font-size: 17px; transition: color .2s; }
-    .footer-social a:hover { color: #757bbd; }
+    /* reviews on black bg */
+    .reviews-section { background: #000 !important; }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div class="tb-inner">
-    <div class="top-bar-left">
-      <a href="tel:0912407019"><i class="fas fa-mobile-alt fa-sm"></i> 091 240 7019</a>
-    </div>
-    <div class="top-bar-center">
-      <a href="#"><i class="fas fa-map-marker-alt fa-sm"></i> Južna Obala III, br. 6, Zagreb 10000</a>
-    </div>
-    <div class="top-bar-right">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="index.html"><img src="Befit2benefit%20logo.png" alt="BeFit2Benefit"></a>
-    <ul class="nav-links">
-      <li><a href="index.html">POČETNA</a></li>
-      <li><a href="o-nama.html">O NAMA</a></li>
-      <li class="dropdown">
-        <a href="treninzi.html" class="active">TRENINZI</a>
-        <ul class="dropdown-menu">
-          <li><a href="treninzi.html#individualni">Individualni treninzi</a></li>
-          <li><a href="treninzi.html#polu-individualni">Polu individualni treninzi</a></li>
-          <li><a href="treninzi.html#online-mentorstvo">Online mentorstvo</a></li>
-          <li><a href="treninzi.html#korporativni">Korporativni fitness</a></li>
-        </ul>
-      </li>
-      <li><a href="kontakt.html">KONTAKT</a></li>
-    </ul>
-    <a href="tel:0912407019" class="nav-phone">091 240 7019</a>
-  </div>
-</nav>
+<div id="site-header"></div>
 
 <!-- PAGE HEADER -->
-<section class="page-header">
-  <div class="page-header-content">
-    <h1>Treninzi</h1>
-  </div>
-</section>
+<div class="page-header">
+  <h1>Treninzi</h1>
+</div>
 
 <!-- ── INDIVIDUALNI TRENINZI ── -->
 <section class="service-section" id="individualni">
@@ -504,7 +115,7 @@
           <p>Inicijalno testiranje koje nam pomaže u izradi personaliziranog plana treninga, te pomoću tranzitivnih testiranja pratimo Vaš napredak i prilagođavamo treninge upravo Vama kako biste postigli željene rezultate.</p>
         </div>
       </div>
-      <a href="#kontakt" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
+      <a href="kontakt.html" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -546,7 +157,7 @@
           <p>Početno testiranje kako bismo razumjeli tvoje ciljeve i trenutno stanje. Redovito pratimo napredak, prilagođavamo vježbe i osiguravamo optimalne rezultate.</p>
         </div>
       </div>
-      <a href="#kontakt" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
+      <a href="kontakt.html" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -593,7 +204,7 @@
           <p>Redovito prilagođavanje planova prema tvojim naprecima, ciljevima i potrebama.</p>
         </div>
       </div>
-      <a href="#kontakt" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
+      <a href="kontakt.html" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -643,12 +254,12 @@
           <p>Redovito prilagođavanje programa prema naprecima, ciljevima i potrebama vašeg tima.</p>
         </div>
       </div>
-      <a href="#kontakt" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
+      <a href="kontakt.html" class="btn-svc">BESPLATNE KONZULTACIJE <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
-<!-- ── REVIEWS ── -->
+<!-- REVIEWS -->
 <section class="reviews-section">
   <div class="reviews-wrap">
     <div class="reviews-card">
@@ -663,7 +274,7 @@
         <div class="review-item">
           <div class="rev-stars">★★★★★</div>
           <div class="rev-date">Sep 2, 2023</div>
-          <div class="rev-text">Odlično iskustvo! Preporučujem svima koji žele postići rezultate. Petar je odličan trener koji zna kako motivirati klijente prema ciljevima. Bez obzira na razinu forme, uvijek pronađe pravi pristup. <a href="#">Više</a></div>
+          <div class="rev-text">Odlično iskustvo! Preporučujem svima koji žele postići rezultate. Petar je odličan trener koji zna kako motivirati klijente prema ciljevima. <a href="#">Više</a></div>
           <div class="rev-author">
             <div class="rev-avatar">B</div>
             <div class="rev-author-name">Bruno Palinić</div>
@@ -673,7 +284,7 @@
         <div class="review-item">
           <div class="rev-stars">★★★★★</div>
           <div class="rev-date">Dec 14, 2023</div>
-          <div class="rev-text">Sve pohvale za predanost i usluge, a osobito za pripremu atletike. Zahvaljujem na pristupačnosti i stručnosti. Preporučujem svima koji žele napredovati u fitnessu i zdravlju. <a href="#">Više</a></div>
+          <div class="rev-text">Sve pohvale za predanost i usluge, a osobito za pripremu atletike. Preporučujem svima koji žele napredovati u fitnessu i zdravlju. <a href="#">Više</a></div>
           <div class="rev-author">
             <div class="rev-avatar">M</div>
             <div class="rev-author-name">Mirco Talbeut</div>
@@ -683,7 +294,7 @@
         <div class="review-item">
           <div class="rev-stars">★★★★★</div>
           <div class="rev-date">Sep 13, 2023</div>
-          <div class="rev-text">Uz pomoć Petra uspio sam izgubiti 10 kilograma za 3 mjeseca. Treninzi su bili izazovni ali motivirajući. Hvala Petru što je uvijek dostupan za pitanja i savjete. <a href="#">Više</a></div>
+          <div class="rev-text">Uz pomoć Petra uspio sam izgubiti 10 kilograma za 3 mjeseca. Treninzi su bili izazovni ali motivirajući. <a href="#">Više</a></div>
           <div class="rev-author">
             <div class="rev-avatar">B</div>
             <div class="rev-author-name">Bruno Kaleb</div>
@@ -692,43 +303,18 @@
         </div>
       </div>
       <div class="reviews-dots">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="active"></span><span></span><span></span><span></span>
       </div>
       <div class="reviews-cta">
-        <a href="#kontakt" class="btn btn-purple">BESPLATNE KONZULTACIJE</a>
+        <a href="kontakt.html" class="btn btn-purple">BESPLATNE KONZULTACIJE</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="cta-section" id="kontakt">
-  <div class="cta-inner">
-    <p class="cta-eyebrow">SPREMNI NA PROMJENU?</p>
-    <h2>Besplatne konzultacije</h2>
-    <p>Napravite prvi korak prema boljoj verziji sebe. Kontaktirajte nas i dogovorite besplatne konzultacije – bez obveza, bez pritiska, samo čisti napredak.</p>
-    <a href="tel:0912407019" class="btn btn-purple">KONTAKTIRAJTE NAS</a>
-  </div>
-</section>
+<div id="site-cta"></div>
+<div id="site-footer"></div>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <a href="index.html"><img src="Befit2benefit%20logo.png" alt="BeFit2Benefit"></a>
-    </div>
-    <p class="footer-copy">© Copyright 2023 BeFit2Benefit. Sva prava pridržana.</p>
-    <div class="footer-social">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-</footer>
-
+<script src="main.js"></script>
 </body>
 </html>

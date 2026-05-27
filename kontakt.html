@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – BeFit2Benefit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body { background: #fff; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      height: 200px;
+      background: url('pero%20vjezba%205%20wide.jpeg') center 40% / cover no-repeat;
+    }
+    .page-header h1 { font-size: clamp(26px, 4vw, 42px); }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section { padding: 72px 24px; background: #fff; }
+    .contact-wrap { max-width: 960px; margin: 0 auto; }
+    .contact-wrap h2 {
+      font-size: 28px; font-weight: 800; color: #191919;
+      margin-bottom: 10px; text-align: center;
+    }
+    .contact-rule { width: 48px; height: 3px; background: #757bbd; margin: 0 auto 48px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── INFO SIDE ── */
+    .contact-info h3 {
+      font-size: 17px; font-weight: 700; color: #191919;
+      margin-bottom: 24px; text-transform: uppercase; letter-spacing: .5px;
+    }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 50%; background: #191919;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item-icon i { color: #fff; font-size: 16px; }
+    .contact-item-body { padding-top: 2px; }
+    .contact-item-body strong {
+      display: block; font-size: 13px; font-weight: 700;
+      color: #191919; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .contact-item-body a,
+    .contact-item-body span {
+      font-size: 14px; color: #666; text-decoration: none; line-height: 1.6;
+    }
+    .contact-item-body a:hover { color: #757bbd; }
+
+    .contact-social { margin-top: 36px; }
+    .contact-social strong {
+      display: block; font-size: 13px; font-weight: 700;
+      color: #191919; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .social-icons { display: flex; gap: 12px; }
+    .social-icons a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #191919; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 15px; transition: background .2s;
+      text-decoration: none;
+    }
+    .social-icons a:hover { background: #757bbd; }
+
+    /* ── FORM SIDE ── */
+    .contact-form h3 {
+      font-size: 17px; font-weight: 700; color: #191919;
+      margin-bottom: 24px; text-transform: uppercase; letter-spacing: .5px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 700;
+      color: #191919; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; box-sizing: border-box;
+      padding: 12px 14px; border: 1px solid #ddd; border-radius: 4px;
+      font-size: 14px; color: #333; background: #fafafa;
+      font-family: inherit; transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #757bbd; background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit { margin-top: 8px; }
+    .form-submit .btn { width: 100%; justify-content: center; font-size: 13px; padding: 14px 0; }
+
+    /* ── MAP ── */
+    .map-section { background: #f7f8fc; padding: 0; }
+    .map-section iframe { display: block; width: 100%; height: 380px; border: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 480px) {
+      .contact-section { padding: 52px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Kontakt</h1>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-wrap">
+    <h2>Stupite s nama u kontakt</h2>
+    <div class="contact-rule"></div>
+
+    <div class="contact-grid">
+
+      <!-- INFO -->
+      <div class="contact-info">
+        <h3>Informacije</h3>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-item-body">
+            <strong>Telefon</strong>
+            <a href="tel:+385912407019">+385 91 240 7019</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-item-body">
+            <strong>Email</strong>
+            <a href="mailto:info@befit2benefit.hr">info@befit2benefit.hr</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-item-body">
+            <strong>Lokacija</strong>
+            <span>Zagreb, Hrvatska</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+          <div class="contact-item-body">
+            <strong>Radno vrijeme</strong>
+            <span>Pon – Pet: 07:00 – 21:00<br>Sub: 09:00 – 15:00</span>
+          </div>
+        </div>
+
+        <div class="contact-social">
+          <strong>Pratite nas</strong>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form">
+        <h3>Pošaljite poruku</h3>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="ime">Ime i prezime</label>
+            <input type="text" id="ime" name="ime" placeholder="Vaše ime i prezime" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email adresa</label>
+            <input type="email" id="email" name="email" placeholder="vas@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefon (neobavezno)</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+385 ...">
+          </div>
+          <div class="form-group">
+            <label for="poruka">Poruka</label>
+            <textarea id="poruka" name="poruka" placeholder="Napišite svoju poruku..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-purple">POŠALJITE PORUKU</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89009.2905893682!2d15.876110!3d45.814442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d71a0e0f9e71%3A0x400ad50860e90d0!2sZagreb!5e0!3m2!1shr!2shr!4v1700000000000!5m2!1shr!2shr"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="BeFit2Benefit lokacija">
+  </iframe>
+</div>
+
+<div id="site-cta"></div>
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+</body>
+</html>
