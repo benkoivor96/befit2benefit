@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://befit2benefit.hr/kontakt.html">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23757bbd'/><text x='50' y='70' font-size='64' text-anchor='middle' font-family='Ubuntu,sans-serif' font-weight='900' fill='white'>B</text></svg>">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -110,6 +110,13 @@
     .form-group textarea { resize: vertical; min-height: 130px; }
     .form-submit { margin-top: 8px; }
     .form-submit .btn { width: 100%; justify-content: center; font-size: 13px; padding: 14px 0; }
+    .form-submit .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .form-feedback {
+      margin-top: 16px; padding: 13px 16px; border-radius: 4px;
+      font-size: 13.5px; line-height: 1.5; display: none;
+    }
+    .form-feedback.success { background: #edfaf3; color: #1a7a45; border: 1px solid #a8e6c3; display: block; }
+    .form-feedback.error   { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; display: block; }
 
     /* ── MAP ── */
     .map-section { background: #fff; padding: 0 24px 72px; }
@@ -192,15 +199,14 @@
       <!-- FORM -->
       <div class="contact-form">
         <h3>Pošaljite poruku</h3>
-        <form action="https://formsubmit.co/info@befit2benefit.hr" method="POST">
-          <!-- Formsubmit konfiguracija -->
-          <input type="hidden" name="_subject" value="Nova poruka s BeFit2Benefit web stranice">
-          <input type="hidden" name="_next" value="https://befit2benefit.hr/kontakt.html">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="8d3e9fad-d58e-46ac-b1ba-217c76497bf2">
+          <input type="hidden" name="subject" value="Nova poruka s BeFit2Benefit web stranice">
+          <input type="hidden" name="from_name" value="BeFit2Benefit Web">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-group">
             <label for="ime">Ime i prezime</label>
-            <input type="text" id="ime" name="ime" placeholder="Vaše ime i prezime" required>
+            <input type="text" id="ime" name="name" placeholder="Vaše ime i prezime" required>
           </div>
           <div class="form-group">
             <label for="email">Email adresa</label>
@@ -212,11 +218,12 @@
           </div>
           <div class="form-group">
             <label for="poruka">Poruka</label>
-            <textarea id="poruka" name="poruka" placeholder="Napišite svoju poruku..." required></textarea>
+            <textarea id="poruka" name="message" placeholder="Napišite svoju poruku..." required></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit" class="btn btn-purple">POŠALJITE PORUKU</button>
+            <button type="submit" id="form-btn" class="btn btn-purple">POŠALJITE PORUKU</button>
           </div>
+          <div id="form-feedback" class="form-feedback"></div>
         </form>
       </div>
 
@@ -241,6 +248,39 @@
 <div id="site-footer"></div>
 <div id="site-cookie"></div>
 
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn      = document.getElementById('form-btn');
+    const feedback = document.getElementById('form-feedback');
+
+    btn.disabled    = true;
+    btn.textContent = 'Slanje...';
+    feedback.className = 'form-feedback';
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        feedback.className   = 'form-feedback success';
+        feedback.textContent = '✓ Hvala! Vaša poruka je uspješno poslana. Javit ćemo vam se ubrzo.';
+        this.reset();
+      } else {
+        throw new Error(json.message);
+      }
+    } catch {
+      feedback.className   = 'form-feedback error';
+      feedback.textContent = 'Došlo je do greške. Molimo pokušajte ponovo ili nas kontaktirajte direktno na +385 91 240 7019.';
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = 'POŠALJITE PORUKU';
+    }
+  });
+</script>
 <script src="main.js"></script>
 </body>
 </html>
