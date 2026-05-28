@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://befit2benefit.hr/sitemap.xml

@@ -72,10 +72,29 @@
     });
   }
 
-  /* ── Load footer and CTA in parallel ── */
+  /* ── Load footer, CTA and cookie banner in parallel ── */
   await Promise.all([
     inject('site-footer', 'components/footer.html'),
     inject('site-cta',    'components/cta.html'),
+    inject('site-cookie', 'components/cookie-banner.html'),
   ]);
+
+  /* ── Cookie banner logic ── */
+  const banner  = document.getElementById('cookie-banner');
+  const consent = localStorage.getItem('cookie-consent');
+
+  if (banner && !consent) {
+    banner.style.display = 'flex';
+
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      banner.style.display = 'none';
+    });
+
+    document.getElementById('cookie-decline')?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
 
 })();
