@@ -123,6 +123,25 @@
     .map-wrap { max-width: 960px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.10); }
     .map-section iframe { display: block; width: 100%; height: 380px; border: 0; }
 
+    /* Map placeholder */
+    .map-placeholder {
+      max-width: 960px; margin: 0 auto; height: 380px;
+      background: #f7f8fc; border-radius: 10px; border: 1px solid #e8e8f0;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 6px; text-align: center; padding: 32px 24px;
+    }
+    .map-placeholder .map-pin-icon { font-size: 36px; color: #757bbd; margin-bottom: 6px; }
+    .map-placeholder .map-address { font-size: 15px; font-weight: 700; color: #191919; }
+    .map-placeholder .map-city { font-size: 13px; color: #888; margin-bottom: 12px; }
+    .map-placeholder-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .map-placeholder-actions .btn { font-size: 12px; padding: 11px 22px; }
+    .map-open-link {
+      font-size: 13px; color: #757bbd; text-decoration: none;
+      display: flex; align-items: center; gap: 5px; font-weight: 500;
+    }
+    .map-open-link:hover { text-decoration: underline; }
+    .map-cookie-note { font-size: 11.5px; color: #bbb; margin-top: 8px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -233,13 +252,30 @@
 
 <!-- MAP -->
 <div class="map-section">
-  <div class="map-wrap">
+  <!-- Placeholder — prikazuje se dok korisnik ne pristane na cookies -->
+  <div id="map-placeholder" class="map-placeholder">
+    <i class="fas fa-map-marker-alt map-pin-icon"></i>
+    <p class="map-address">Južna Obala III, br. 6</p>
+    <p class="map-city">Zagreb 10000</p>
+    <div class="map-placeholder-actions">
+      <button id="show-map-btn" class="btn btn-purple">
+        <i class="fas fa-map" style="margin-right:7px"></i>Prikaži kartu
+      </button>
+      <a href="https://maps.app.goo.gl/uRQEd7ZZAX2jL26U6" target="_blank" rel="noopener" class="map-open-link">
+        Otvori u Google Maps <i class="fas fa-external-link-alt" style="font-size:10px"></i>
+      </a>
+    </div>
+    <p class="map-cookie-note">Karta koristi Google Maps kolačiće</p>
+  </div>
+  <!-- Iframe — učitava se tek nakon pristanka -->
+  <div id="map-wrap" class="map-wrap" style="display:none">
     <iframe
-      src="https://maps.google.com/maps?q=Ju%C5%BEna+Obala+III+6%2C+Zagreb+10000&output=embed&hl=hr&z=16"
+      id="map-iframe"
+      data-src="https://maps.google.com/maps?q=45.7842255,15.9599179&output=embed&hl=hr&z=17"
       allowfullscreen=""
-      loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="BeFit2Benefit lokacija – Južna Obala III, br. 6, Zagreb">
+      title="BeFit2Benefit lokacija – Južna Obala III, br. 6, Zagreb"
+      style="display:block;width:100%;height:380px;border:0">
     </iframe>
   </div>
 </div>
@@ -249,6 +285,33 @@
 <div id="site-cookie"></div>
 
 <script>
+  /* ── Lazy Google Maps ── */
+  function loadMap() {
+    const placeholder = document.getElementById('map-placeholder');
+    const mapWrap     = document.getElementById('map-wrap');
+    const iframe      = document.getElementById('map-iframe');
+    if (!placeholder || !mapWrap || !iframe) return;
+    if (!iframe.src) iframe.src = iframe.dataset.src;
+    placeholder.style.display = 'none';
+    mapWrap.style.display = 'block';
+  }
+
+  // Već pristao → odmah prikaži
+  if (localStorage.getItem('cookie-consent') === 'accepted') loadMap();
+
+  // Gumb "Prikaži kartu" → prihvati + prikaži
+  document.getElementById('show-map-btn')?.addEventListener('click', function () {
+    localStorage.setItem('cookie-consent', 'accepted');
+    loadMap();
+    // Sakrij cookie banner ako je vidljiv
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
+  });
+
+  // Prihvat bannera → prikaži mapu
+  document.addEventListener('cookie-accepted', loadMap);
+
+  /* ── Forma ── */
   document.getElementById('contact-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const btn      = document.getElementById('form-btn');

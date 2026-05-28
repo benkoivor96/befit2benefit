@@ -89,6 +89,7 @@
     document.getElementById('cookie-accept')?.addEventListener('click', () => {
       localStorage.setItem('cookie-consent', 'accepted');
       banner.style.display = 'none';
+      document.dispatchEvent(new CustomEvent('cookie-accepted'));
     });
 
     document.getElementById('cookie-decline')?.addEventListener('click', () => {
